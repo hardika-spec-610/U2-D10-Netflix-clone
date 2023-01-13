@@ -78,3 +78,60 @@ a:hover {
 .show > .btn-outline-info.dropdown-toggle:focus {
   box-shadow: none;
 }
+.border-color {
+  border: 1px solid var(--text-color);
+}
+.dropdown-genere-btn {
+  color: white;
+  border-color: var(--text-color);
+  border-radius: 0;
+  max-height: 38px;
+}
+.carousel-control-prev {
+  left: -2%;
+}
+.carousel-control-next {
+  right: -2%;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  width: 26px;
+  height: 26px;
+}
+.carousel-control-prev-icon {
+  background-image: url(./assets/media/chevron-left.svg);
+}
+.carousel-control-next-icon {
+  background-image: url(./assets/media/chevron-right.svg);
+}
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+  width: 2%;
+}
+.media-hover {
+  transition: all 0.3s linear;
+  position: relative;
+}
+.media-hover:hover {
+  transform: scale(1.2);
+}
+.carousel-inner {
+  /* overflow: visible; */
+  padding-block: 10px;
+}
+.z-index2 {
+  z-index: 2;
+}
+.z-index3 {
+  z-index: 3;
+}
+.z-index4 {
+  z-index: 4;
+}
+.z-index5 {
+  z-index: 5;
+}
+.z-index6 {
+  z-index: 6;
+}
