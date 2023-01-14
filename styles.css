@@ -33,6 +33,7 @@
     Arial, sans-serif;
   --font-color: white;
   --text-color: #737373;
+  --opacity-text: rgba(255, 255, 255, 0.8);
   --yellow-color: #ffc017;
   --nav-link-color: rgb(41, 41, 41);
   --darkgray-btn-border: rgba(25, 25, 25, 1);
@@ -95,7 +96,7 @@ a:hover {
   border: 1px solid var(--text-color);
 }
 .dropdown-genere-btn {
-  color: white;
+  /* color: white; */
   border-color: var(--text-color);
   border-radius: 0;
   max-height: 38px;
@@ -135,7 +136,7 @@ a:hover {
 } */
 
 .ftr-block {
-  max-width: 900px;
+  max-width: 850px;
   width: 100%;
   margin-inline: auto;
 }
@@ -148,36 +149,3 @@ a:hover {
   color: var(--text-color);
 }
 /* --------------------------------------------------------------------- */
-.edit-section {
-  max-width: 700px;
-}
-.edit-title {
-  font-size: 50px;
-}
-.edit-block {
-  border-top: 1px solid var(--text-color);
-  border-bottom: 1px solid var(--text-color);
-  padding-right: 20px;
-}
-.strive-std-b {
-  background-color: var(--text-color);
-  padding-inline: 10px;
-  padding-block: 5px;
-}
-.b-border {
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--text-color);
-}
-.m-btn {
-  border-radius: 0;
-  font-size: 12px;
-}
-.edit-btn {
-  letter-spacing: 1px;
-  border: 1px solid var(--text-color);
-  border-radius: 0;
-  color: var(--text-color);
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-top: 10px;
-}
