@@ -1,0 +1,36 @@
+body {
+  background-color: var(--font-color);
+  color: var(--text-color);
+}
+h6 {
+  font-size: 14px;
+}
+.account-section {
+  max-width: 900px;
+}
+.btn-membership {
+  background-color: #e1e1e1;
+}
+.border-2 {
+  border-width: 2px !important;
+}
+.font-small {
+  font-size: 14px;
+}
+.email-color {
+  color: var(--bg-color);
+}
+.change-link {
+  color: var(--primary);
+}
+.change-link:hover {
+  color: #0062cc;
+}
+.bi-paypal {
+  color: var(--bg-color);
+}
+.badge-light {
+  background-color: transparent;
+  border: 1px solid var(--bg-color);
+  letter-spacing: 1px;
+}

@@ -45,6 +45,9 @@ body {
   background-color: var(--bg-color);
   color: var(--font-color);
 }
+.btn {
+  border-radius: 0;
+}
 .nav-bg {
   background-color: black;
 }
@@ -99,7 +102,6 @@ a:hover {
 .dropdown-genere-btn {
   color: white;
   border-color: var(--text-color);
-  border-radius: 0;
   max-height: 38px;
 }
 .navbar-toggler-icon {
@@ -135,9 +137,6 @@ a:hover {
   transform: scale(1.2);
   z-index: 1;
 }
-/* .carousel-inner {
-  overflow: visible;
-} */
 
 .ftr-block {
   max-width: 850px;
