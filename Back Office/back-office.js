@@ -1,25 +1,31 @@
-const url = "https://striveschool-api.herokuapp.com/api/movies";
+const url = "https://striveschool-api.herokuapp.com/api/movies/";
 const queryString = window.location.search;
 console.log(queryString);
 const params = new URLSearchParams(queryString);
 console.log(params);
 const id = params.get("id"); //this can either an id or null
 console.log(id);
-const userId = params.get("userId");
+
+const method = id ? "PUT" : "POST";
+const endPoint = id ? url + id : url;
+
+const options = {
+  method: method,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+  },
+};
 
 window.onload = async () => {
   try {
-    if (id !== null) {
+    if (id) {
       const submitBtn = document.querySelector(".btn.btn-outline-dark");
       submitBtn.remove();
 
-      let response = await fetch(url + "/" + id, {
-        headers: new Headers({
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
-        }),
-      });
+      let response = await fetch(endPoint, options);
+
       if (response.ok) {
         let { name, description, category, imageUrl } = await response.json();
         document.getElementById("name").value = name;
@@ -34,8 +40,8 @@ window.onload = async () => {
       const putButton = document.querySelector(".btn.btn-secondary");
       putButton.remove();
 
-      //   const deleteBtn = document.querySelector(".btn.btn-danger");
-      //   deleteBtn.remove();
+      const deleteBtn = document.querySelector(".btn.btn-danger");
+      deleteBtn.remove();
     }
   } catch (error) {
     console.error(error);
@@ -98,7 +104,7 @@ const handleEdit = async (editevent) => {
     //     }),
     //   });
     // }
-    let response = await fetch(url + "/" + id, {
+    let response = await fetch(url + id, {
       method: "PUT",
       body: JSON.stringify(editMovie),
       headers: new Headers({
@@ -110,6 +116,7 @@ const handleEdit = async (editevent) => {
     if (response.ok) {
       let data = await response.json();
       console.log(data);
+      window.location.assign("../index.html");
       successAlert();
     } else {
       throw response.status + " " + response.statusText;
@@ -119,7 +126,7 @@ const handleEdit = async (editevent) => {
   }
 };
 
-const deleteEvent = async () => {
+const deleteEvent = async (event) => {
   try {
     let response = await fetch(url + "/" + id, {
       method: "DELETE",
@@ -138,7 +145,7 @@ const deleteEvent = async () => {
       document.getElementById("description").value = "";
       document.getElementById("category").value = "Horror";
       document.getElementById("imageUrl").value = "";
-      //   handleSubmitMovie(movieIdDelete);
+      handleSubmitMovie(event);
       //   successAlert();
     } else {
       throw response.status + " " + response.statusText;
