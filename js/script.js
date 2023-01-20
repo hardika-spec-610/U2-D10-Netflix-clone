@@ -17,7 +17,7 @@ const getMovies = async () => {
     for (const genere of genres) {
       const response = await fetch(url + "/" + genere, options);
       const movieArray = await response.json();
-      console.log(movieArray);
+      console.log("movies", movieArray);
       renderMovie(movieArray);
     }
   } catch (error) {
@@ -28,7 +28,7 @@ const getMovies = async () => {
 
 const renderMovie = (arrayOfMovies) => {
   const movieRow = document.getElementById("movie-row");
-  //   movieRow.innerHTML = "";
+  // movieRow.innerHTML = "";
   arrayOfMovies.forEach((singleMovie) => {
     const { name, description, imageUrl, category, _id } = singleMovie;
     movieRow.innerHTML += `
@@ -53,9 +53,30 @@ const renderMovie = (arrayOfMovies) => {
                       </div>
                       <div class="pt-2">
                         <a href="../Back Office/back-office.html?id=${_id}" class="card-link" style="  text-decoration: underline">Edit</a>
+                        <a class=" btn btn-danger py-0 px-1" onclick='deleteMovie("${_id}")' >Delete</a>
                       </div>
                     </div>
                 </div>
             </div>`;
   });
+};
+
+const deleteMovie = async (idToDelete) => {
+  try {
+    let response = await fetch(url + "/" + idToDelete, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+      }),
+    });
+    console.log(response);
+    if (response.ok) {
+      //   await getMovies();
+      window.location.reload();
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
