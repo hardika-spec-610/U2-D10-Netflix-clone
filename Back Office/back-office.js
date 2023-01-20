@@ -128,7 +128,7 @@ const handleEdit = async (editevent) => {
 
 const deleteEvent = async (event) => {
   try {
-    let response = await fetch(url + "/" + id, {
+    let response = await fetch(url + id, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",
