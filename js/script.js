@@ -1,14 +1,36 @@
 const url = "https://striveschool-api.herokuapp.com/api/movies";
 
 window.onload = async () => {
-  //   await getMovies();
-  await getHorrorMovie();
-  await getThrillerMovie();
-  await getRomanticMovie();
-  await getCrimeMovie();
+  await getMovies();
+  //   await getHorrorMovie();
+  //   await getThrillerMovie();
+  //   await getRomanticMovie();
+  //   await getCrimeMovie();
 };
 
-// const getMovies = async () => {
+const getMovies = async () => {
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+      },
+    };
+    const genres = ["Horror", "Thriller", "Romantic", "Crime"];
+    for (const genere of genres) {
+      const response = await fetch(url + "/" + genere, options);
+      const movieArray = await response.json();
+      console.log("movies", movieArray);
+      renderMovie(movieArray);
+    }
+  } catch (error) {
+    //   handleError(error)
+    console.error(error);
+  }
+};
+
+// const getHorrorMovie = async () => {
 //   try {
 //     const options = {
 //       method: "GET",
@@ -17,91 +39,69 @@ window.onload = async () => {
 //           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
 //       },
 //     };
-//     const genres = ["Horror", "Thriller", "Romantic", "Crime"];
-//     for (const genere of genres) {
-//       const response = await fetch(url + "/" + genere, options);
-//       const movieArray = await response.json();
-//       console.log("movies", movieArray);
-//       renderMovie(movieArray);
-//     }
+
+//     const response = await fetch(url + "/Horror", options);
+//     const movieArray = await response.json();
+//     console.log("movies", movieArray);
+//     renderMovie(movieArray);
 //   } catch (error) {
-//     //   handleError(error)
 //     console.error(error);
 //   }
 // };
+// const getThrillerMovie = async () => {
+//   try {
+//     const options = {
+//       method: "GET",
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+//       },
+//     };
 
-const getHorrorMovie = async () => {
-  try {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
-      },
-    };
+//     const response = await fetch(url + "/Thriller", options);
+//     const movieArray = await response.json();
+//     console.log("movies", movieArray);
+//     renderMovie(movieArray);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+// const getRomanticMovie = async () => {
+//   try {
+//     const options = {
+//       method: "GET",
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+//       },
+//     };
 
-    const response = await fetch(url + "/Horror", options);
-    const movieArray = await response.json();
-    console.log("movies", movieArray);
-    renderMovie(movieArray);
-  } catch (error) {
-    console.error(error);
-  }
-};
-const getThrillerMovie = async () => {
-  try {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
-      },
-    };
+//     const response = await fetch(url + "/Romantic", options);
+//     const movieArray = await response.json();
+//     console.log("movies", movieArray);
+//     renderMovie(movieArray);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+// const getCrimeMovie = async () => {
+//   try {
+//     const options = {
+//       method: "GET",
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
+//       },
+//     };
 
-    const response = await fetch(url + "/Thriller", options);
-    const movieArray = await response.json();
-    console.log("movies", movieArray);
-    renderMovie(movieArray);
-  } catch (error) {
-    console.error(error);
-  }
-};
-const getRomanticMovie = async () => {
-  try {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
-      },
-    };
-
-    const response = await fetch(url + "/Romantic", options);
-    const movieArray = await response.json();
-    console.log("movies", movieArray);
-    renderMovie(movieArray);
-  } catch (error) {
-    console.error(error);
-  }
-};
-const getCrimeMovie = async () => {
-  try {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NhNzFlYjE3ZWE3ODAwMTUyZWJlYmIiLCJpYXQiOjE2NzQyMTE4MjAsImV4cCI6MTY3NTQyMTQyMH0.0-NssUu9Qo7TA-VtfPylpWHT1WSJyFLfB3cM-tUO3uo",
-      },
-    };
-
-    const response = await fetch(url + "/Crime", options);
-    const movieArray = await response.json();
-    console.log("movies", movieArray);
-    renderMovie(movieArray);
-  } catch (error) {
-    console.error(error);
-  }
-};
+//     const response = await fetch(url + "/Crime", options);
+//     const movieArray = await response.json();
+//     console.log("movies", movieArray);
+//     renderMovie(movieArray);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
 const renderMovie = (arrayOfMovies) => {
   const movieRow = document.getElementById("movie-row");

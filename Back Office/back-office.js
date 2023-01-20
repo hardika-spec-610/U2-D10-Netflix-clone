@@ -139,8 +139,8 @@ const deleteEvent = async (event) => {
 
     if (response.ok) {
       const parsedBody = await response.json();
-      console.log("delete", parsedBody);
-      window.location.reload();
+      //   console.log("delete", parsedBody);
+      window.location.assign("./back-office.html");
       document.getElementById("name").value = "";
       document.getElementById("description").value = "";
       document.getElementById("category").value = "Horror";
