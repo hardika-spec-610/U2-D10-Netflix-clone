@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movies(Back Office)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+        .form-control{
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 5px; 
+            padding-left: 10px
+        }
+    </style>
+  </head>
+  <body>
+    <div class="d-none alert alert-danger alert-dismissible fade" role="alert">
+      <span class="alert-text"> A simple danger alert—check it out! </span>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div
+      class="d-none alert alert-success alert-dismissible position-fixed fixed-top fade w-50"
+      role="alert"
+    >
+      <strong>Holy guacamole!</strong> You made it!
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <header>
+      <nav class="navbar navbar-dark navbar-expand-lg nav-bg px-0">
+        <div class="container-fluid px-5">
+          <a class="navbar-brand" href="#"
+            ><img
+              src="../assets/netflix_logo.png"
+              alt="netflix logo"
+              width="110px"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Tv Shows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Movies</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Recently Added</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">My List</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-search" style="cursor: pointer"></i>
+                <a class="nav-link" href="#">KIDS</a>
+                <i class="bi bi-bell-fill" style="cursor: pointer"></i>
+
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn dropdown-toggle btn-outline-info"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="../assets/kids_icon.png"
+                      alt="kids icon"
+                      width="24px"
+                    />
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button ">
+                      <a href="../edit-profile.html">Edit Profile</a>
+                    </button>
+                    <button class="dropdown-item" type="button">
+                      Another action
+                    </button>
+                    <button class="dropdown-item" type="button">
+                      <a href="../account-settings.html"> Account Settings</a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container">
+        <div class="row pt-5">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <form class="form1">
+                    <div class="form-group">
+                        <label for="name">Name of movie:</label>
+                        <input type="text" class="form-control input-forms-1" id="name" aria-describedby="name"
+                            placeholder="Please enter the name of the movie" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description of the movie:</label>
+                        <textarea  id="description"
+                            class="input-forms-1 form-control" name="description" rows="8"
+                            placeholder="Description of the movie" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category of the movie:</label>
+                        <select name="category" id="category" class="input-forms-1 form-control"
+                            >
+                            <option value="Horror">Horror</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Crime">Crime</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Movie image URL:</label>
+                        <input  type="text"
+                            class="form-control input-forms-1" id="imageUrl" aria-describedby="image"
+                            placeholder="Image URL" required />
+                    </div>
+                    <div class="buttongroup">
+                        <div>
+                            <button type="button"  onclick="handleSubmitMovie(event)" class="btn btn-outline-dark" style="color: white;">Submit</button>
+                            <button type="button" class=" btn btn-danger" onclick="deleteEvent()" class="btn btn-secondary">Delete</button>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./back-office.js"></script>
+  </body>
+</html>

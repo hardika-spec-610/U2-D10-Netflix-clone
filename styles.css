@@ -158,3 +158,44 @@ a:hover {
   color: var(--font-color);
 }
 /* --------------------------------------------------------------------- */
+.movie-card {
+  position: relative;
+  transition: transform 0.5s;
+  font-size: 12px;
+}
+.movie-card:hover {
+  /* position: relative; */
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.infos-container {
+  width: 100%;
+  color: white;
+  padding: 15px;
+  position: absolute;
+  overflow: hidden;
+  /* background-color: red; */
+  z-index: 2;
+  background-image: linear-gradient(rgba(27, 37, 48, 0), #1b2530 48px);
+  transform: translateY(-62px);
+  display: none;
+  transition: opacity 0.3s, transform 0.5s;
+}
+
+.movie-card:hover .infos-container {
+  display: block;
+  transform: translateY(-48px);
+}
+
+.plus-btn {
+  font-size: 18px;
+  transform: translateX(47px);
+  transition: transform 0.7s;
+  opacity: 0;
+}
+
+.movie-card:hover .plus-btn {
+  transform: translateX(0px);
+  opacity: 1;
+}
